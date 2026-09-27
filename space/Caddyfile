@@ -21,8 +21,9 @@
         # Hermes Agent web dashboard (auth: basic auth you set in Secrets)
         handle /hermes/* {
                 uri strip_prefix /hermes
+                reverse_proxy 127.0.0.1:9119 {
                 header_up X-Forwarded-Prefix /hermes
-                reverse_proxy 127.0.0.1:9119
+                }
         }
 
         # Hermes Agent as an OpenAI-compatible API  (web-to-api)
